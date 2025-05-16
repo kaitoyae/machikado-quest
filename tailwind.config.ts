@@ -6,7 +6,21 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}"
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./*.{js,ts,jsx,tsx,mdx}"
+  ],
+  safelist: [
+    // よく使われるクラスを明示的に含める
+    'bg-primary',
+    'text-primary-foreground',
+    'bg-secondary',
+    'text-secondary-foreground',
+    'bg-accent',
+    'text-accent-foreground',
+    'md:flex-row',
+    'md:w-1/3',
+    'md:w-2/5',
+    'md:w-3/5'
   ],
   theme: {
   	extend: {
