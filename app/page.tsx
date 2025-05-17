@@ -82,43 +82,51 @@ export default function LandingPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-black">
-          <div className="absolute inset-0 z-0">
+        <section className="relative overflow-hidden bg-black min-h-[90vh] md:min-h-0">
+          <div className="absolute inset-0 z-0 md:hidden">
             <Image
-              src={getImagePath("/images/main-visual-tower.png")}
+              src={getImagePath("/images/main-visual-tower-9-16.png")}
               alt="電波塔を含む住宅街の風景"
               fill
               className="object-cover opacity-80"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/70"></div>
           </div>
-          <div className="container relative z-10 py-24 md:py-32 flex flex-col md:flex-row items-center">
+          <div className="container relative z-10 py-16 md:py-32 flex flex-col md:flex-row items-center">
             <div className="md:w-6/12 space-y-6 md:pr-8">
               <div className="inline-block mb-4">
                 <span className="bg-secondary/90 text-secondary-foreground backdrop-blur-sm px-5 py-2 rounded-full text-sm font-bold shadow-lg">2025年夏リリース予定</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white text-shadow-lg leading-tight">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white text-shadow-lg leading-tight">
                 あなたの街が、<br className="hidden md:block" />
                 <span className="text-primary bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                   "冒険の舞台"
                 </span>
                 <br className="hidden md:block" />になる。
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed">
+              <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
                 地域活性・観光・防災教育に応用可能な、<br className="hidden md:block" />社会接続型ARゲーム『まちかどクエスト』
               </p>
-              <p className="text-lg md:text-xl text-white/80">
+              <p className="text-base md:text-xl text-white/80">
                 スマホで楽しめる位置情報×AR×地域連携型のRPG
               </p>
-              <div className="pt-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 transform hover:translate-y-[-2px]">
+              <div className="pt-4 pb-8 md:pb-0">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 transform hover:translate-y-[-2px] w-full md:w-auto">
                   導入相談を申し込む
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
+              <div className="absolute bottom-4 left-0 right-0 md:hidden flex justify-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <div className="font-bold text-lg">AR</div>
+                    <div className="text-xs">体験</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="md:w-6/12 mt-10 md:mt-0 relative">
+            <div className="hidden md:block md:w-6/12 mt-10 md:mt-0 relative">
               <div className="relative h-[400px] md:h-[500px] w-full">
                 <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-lg shadow-2xl transform rotate-3 opacity-80">
                   <div className="w-full h-full bg-gradient-to-tr from-primary/30 to-primary/10 backdrop-blur-sm"></div>
@@ -126,7 +134,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-[90%] h-[90%] overflow-hidden rounded-lg shadow-2xl">
                     <Image
-                      src={getImagePath("/images/main-visual-tower.png")}
+                      src={getImagePath("/images/main-visual-tower-9-16.png")}
                       alt="電波塔を含む住宅街の風景"
                       width={600}
                       height={800}
