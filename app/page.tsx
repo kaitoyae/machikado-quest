@@ -82,21 +82,29 @@ export default function LandingPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-black min-h-[90vh] md:min-h-0">
+        <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black min-h-[90vh] md:min-h-0">
+          {/* モバイル表示用背景 */}
           <div className="absolute inset-0 z-0 md:hidden">
             <Image
               src={getImagePath("/images/main-visual-tower-9-16.png")}
               alt="電波塔を含む住宅街の風景"
               fill
-              className="object-cover opacity-80"
+              className="object-cover opacity-100"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/70"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/0"></div>
           </div>
+          
+          {/* デスクトップ表示用背景 - モバイルでは非表示 */}
+          <div className="absolute inset-0 z-0 hidden md:block">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 to-black/80"></div>
+          </div>
+          
           <div className="container relative z-10 py-16 md:py-32 flex flex-col md:flex-row items-center">
-            <div className="md:w-6/12 space-y-6 md:pr-8">
+            <div className="md:w-1/2 space-y-6 md:pr-8 bg-black/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-lg md:rounded-none">
               <div className="inline-block mb-4">
-                <span className="bg-secondary/90 text-secondary-foreground backdrop-blur-sm px-5 py-2 rounded-full text-sm font-bold shadow-lg">2025年夏リリース予定</span>
+                <span className="bg-secondary text-secondary-foreground px-5 py-2 rounded-full text-sm font-bold shadow-lg">2025年夏リリース予定</span>
               </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white text-shadow-lg leading-tight">
                 あなたの街が、<br className="hidden md:block" />
@@ -126,22 +134,25 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-            <div className="hidden md:block md:w-6/12 mt-10 md:mt-0 relative">
+            
+            {/* デスクトップ表示用コンテンツ */}
+            <div className="hidden md:block md:w-1/2 mt-10 md:mt-0 relative">
               <div className="relative h-[400px] md:h-[500px] w-full">
-                <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-lg shadow-2xl transform rotate-3 opacity-80">
-                  <div className="w-full h-full bg-gradient-to-tr from-primary/30 to-primary/10 backdrop-blur-sm"></div>
+                <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-xl shadow-2xl">
+                  <div className="w-full h-full bg-gradient-to-tr from-primary/20 to-primary/5 backdrop-blur-sm"></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-[90%] h-[90%] overflow-hidden rounded-lg shadow-2xl">
-                    <Image
-                      src={getImagePath("/images/main-visual-tower-9-16.png")}
-                      alt="電波塔を含む住宅街の風景"
-                      width={600}
-                      height={800}
-                      className="w-full h-full object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <div className="w-[95%] h-[90%] overflow-hidden rounded-xl shadow-2xl">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={getImagePath("/images/main-visual-tower.png")}
+                        alt="電波塔を含む住宅街の風景"
+                        fill
+                        className="object-cover object-center"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="flex items-center gap-2 text-white">
                         <MapPin className="h-5 w-5" />
@@ -150,9 +161,9 @@ export default function LandingPage() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bottom-12 right-12 w-32 h-32 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg flex items-center justify-center">
+                <div className="absolute bottom-8 right-8 w-28 h-28 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg flex items-center justify-center transform rotate-[5deg]">
                   <div className="text-white text-center">
-                    <div className="font-bold text-xl">AR</div>
+                    <div className="font-bold text-lg">AR</div>
                     <div className="text-xs">EXPERIENCE</div>
                   </div>
                 </div>
