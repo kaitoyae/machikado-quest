@@ -30,35 +30,35 @@ export default function LandingPage() {
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src={getImagePath("/placeholder-xosu1.png")} alt="Wovi Logo" width={120} height={40} className="h-10 w-auto" />
+            <Image src="/placeholder-logo.png" alt="まちかどクエスト" width={120} height={40} className="h-10 w-auto" />
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link
               href="#overview"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              Overview
+              概要
             </Link>
             <Link
               href="#poc"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              PoC Examples
+              実証事例
             </Link>
             <Link
               href="#use-cases"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              Use Cases
+              活用シーン
             </Link>
             <Link
               href="#contact"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
-              Contact
+              お問い合わせ
             </Link>
             <Button size="sm" className="ml-4 bg-primary hover:bg-primary/80">
-              Request a Demo
+              デモ申し込み
             </Button>
           </nav>
           <Button variant="outline" size="icon" className="md:hidden">
@@ -973,7 +973,7 @@ export default function LandingPage() {
         <div className="container py-12 md:py-16">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-4">
-              <Image src="/placeholder-xosu1.png" alt="Wovi Logo" width={120} height={40} className="h-10 w-auto" />
+              <Image src="/placeholder-logo.png" alt="まちかどクエスト" width={120} height={40} className="h-10 w-auto" />
               <p className="text-sm text-muted-foreground">地域と技術を繋ぎ、新しい体験を創造する</p>
             </div>
             <div>

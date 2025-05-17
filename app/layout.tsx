@@ -6,9 +6,18 @@ import DevNotice from '@/components/dev-notice'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Machikado Quest - 街中冒険ARゲーム',
+  title: 'まちかどクエスト - 街中冒険ARゲーム',
   description: '地域活性・観光・防災教育に応用可能な、社会接続型ARゲーム『まちかどクエスト』',
   generator: 'v0.dev',
+  icons: {
+    icon: '/placeholder-logo.png',
+    apple: '/placeholder-logo.png',
+  },
+  openGraph: {
+    title: 'まちかどクエスト - 街中冒険ARゲーム',
+    description: '地域活性・観光・防災教育に応用可能な、社会接続型ARゲーム『まちかどクエスト』',
+    images: ['/placeholder-logo.png'],
+  },
 }
 
 export default function RootLayout({
