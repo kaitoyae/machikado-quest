@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
+    "dev:persistent": "node dev-server.js",
+    "static": "node forever-server.js",
+    "start:all": "node start-servers.js",
     "build": "next build",
     "postbuild": "node post-build.js",
     "start": "next start",

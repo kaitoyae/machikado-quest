@@ -82,8 +82,8 @@ export default function LandingPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black min-h-[90vh] md:min-h-0">
-          {/* モバイル表示用背景 */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-black min-h-[100vh] md:min-h-0">
+          {/* モバイル表示用背景 - 鮮明に表示 */}
           <div className="absolute inset-0 z-0 md:hidden">
             <Image
               src={getImagePath("/images/main-visual-tower-9-16.png")}
@@ -92,92 +92,102 @@ export default function LandingPage() {
               className="object-cover opacity-100"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/0"></div>
+            {/* テキスト領域のみに最小限のグラデーション */}
+            <div className="absolute top-0 left-0 w-full h-[340px] bg-gradient-to-br from-black/70 via-black/40 to-transparent"></div>
           </div>
           
           {/* デスクトップ表示用背景 - モバイルでは非表示 */}
           <div className="absolute inset-0 z-0 hidden md:block">
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 to-black/80"></div>
+            <Image
+              src={getImagePath("/images/main-visual-tower.png")}
+              alt="電波塔を含む住宅街の風景"
+              fill
+              className="object-cover object-center opacity-100"
+              priority
+            />
+            <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
           </div>
           
-          <div className="container relative z-10 py-16 md:py-32 flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 space-y-6 md:pr-8 bg-black/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-lg md:rounded-none">
-              <div className="inline-block mb-4">
-                <span className="bg-secondary text-secondary-foreground px-5 py-2 rounded-full text-sm font-bold shadow-lg">2025年夏リリース予定</span>
+          {/* モバイル表示用 - 左上にコンパクトにテキスト配置 */}
+          <div className="container relative z-10 pt-6 flex flex-col md:hidden">
+            <div className="w-auto max-w-[320px] pl-2">
+              <div className="inline-block mb-3">
+                <span className="bg-secondary/90 text-secondary-foreground px-3 py-1 rounded-full text-sm font-bold shadow-lg border border-white/10">2025年夏リリース予定</span>
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white text-shadow-lg leading-tight">
-                あなたの街が、<br className="hidden md:block" />
-                <span className="text-primary bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              <h1 className="text-[1.9rem] font-bold tracking-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.7),0_2px_3px_rgba(0,0,0,0.5)]">
+                あなたの街が、<br />
+                <span className="text-primary font-extrabold text-[2.5rem] [text-shadow:0_1px_1px_rgba(0,0,0,0.8),0_2px_3px_rgba(0,0,0,0.6)]">
                   "冒険の舞台"
                 </span>
-                <br className="hidden md:block" />になる。
+                <br />になる。
               </h1>
-              <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed">
-                地域活性・観光・防災教育に応用可能な、<br className="hidden md:block" />社会接続型ARゲーム『まちかどクエスト』
+              <p className="text-[1.2rem] text-white font-medium [text-shadow:0_1px_1px_rgba(0,0,0,0.7)] leading-snug mt-3">
+                地域活性・観光・防災教育に<br />応用可能なARゲーム
               </p>
-              <p className="text-base md:text-xl text-white/80">
-                スマホで楽しめる位置情報×AR×地域連携型のRPG
-              </p>
-              <div className="pt-4 pb-8 md:pb-0">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 transform hover:translate-y-[-2px] w-full md:w-auto">
-                  導入相談を申し込む
-                  <ChevronRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-              <div className="absolute bottom-4 left-0 right-0 md:hidden flex justify-center">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="font-bold text-lg">AR</div>
-                    <div className="text-xs">体験</div>
-                  </div>
+            </div>
+          </div>
+
+          {/* CTA ボタンをビジュアル下部に配置 */}
+          <div className="absolute bottom-24 left-0 right-0 z-20 md:hidden">
+            <div className="container px-6">
+              <Button size="lg" className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg transition-all duration-300 transform hover:translate-y-[-2px]">
+                導入相談を申し込む
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+          
+          {/* デスクトップ表示用コンテンツ */}
+          <div className="container relative z-10 hidden md:flex flex-col justify-center min-h-screen">
+            <div className="md:max-w-2xl space-y-6 md:pr-8">
+              <div className="p-0">
+                <div className="inline-block mb-5">
+                  <span className="bg-secondary/90 text-secondary-foreground px-5 py-2 rounded-full text-sm font-bold shadow-lg border border-white/10">2025年夏リリース予定</span>
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.7),0_2px_4px_rgba(0,0,0,0.5)]">
+                  あなたの街が、<br className="hidden md:block" />
+                  <span className="text-primary font-extrabold [text-shadow:0_1px_2px_rgba(0,0,0,0.7),0_2px_4px_rgba(0,0,0,0.6)]">
+                    "冒険の舞台"
+                  </span>
+                  <br className="hidden md:block" />になる。
+                </h1>
+                <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed mt-4 [text-shadow:0_1px_2px_rgba(0,0,0,0.7)]">
+                  地域活性・観光・防災教育に応用可能な、<br className="hidden md:block" />社会接続型ARゲーム『まちかどクエスト』
+                </p>
+                <p className="text-lg md:text-xl text-white/80 mt-3 [text-shadow:0_1px_1px_rgba(0,0,0,0.7)]">
+                  スマホで楽しめる位置情報×AR×地域連携型のRPG
+                </p>
+                <div className="mt-10">
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-xl transition-all duration-300 transform hover:translate-y-[-2px] px-8 py-6 text-lg rounded-xl font-bold">
+                    導入相談を申し込む
+                    <ChevronRight className="ml-2 h-6 w-6" />
+                  </Button>
                 </div>
               </div>
             </div>
             
-            {/* デスクトップ表示用コンテンツ */}
-            <div className="hidden md:block md:w-1/2 mt-10 md:mt-0 relative">
-              <div className="relative h-[400px] md:h-[500px] w-full">
-                <div className="absolute top-0 right-0 w-full h-full overflow-hidden rounded-xl shadow-2xl">
-                  <div className="w-full h-full bg-gradient-to-tr from-primary/20 to-primary/5 backdrop-blur-sm"></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-[95%] h-[90%] overflow-hidden rounded-xl shadow-2xl">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={getImagePath("/images/main-visual-tower.png")}
-                        alt="電波塔を含む住宅街の風景"
-                        fill
-                        className="object-cover object-center"
-                        priority
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <div className="flex items-center gap-2 text-white">
-                        <MapPin className="h-5 w-5" />
-                        <span className="text-sm font-medium">あなたの街をマップに</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-8 right-8 w-28 h-28 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg flex items-center justify-center transform rotate-[5deg]">
-                  <div className="text-white text-center">
-                    <div className="font-bold text-lg">AR</div>
-                    <div className="text-xs">EXPERIENCE</div>
-                  </div>
-                </div>
+            {/* マップピンアイコンを下部に配置 */}
+            <div className="absolute bottom-12 left-0 md:ml-8">
+              <div className="flex items-center gap-2 text-white bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                <MapPin className="h-5 w-5 text-primary" />
+                <span className="text-sm font-medium">あなたの街をマップに</span>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-50 to-transparent h-12"></div>
+          
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-50 to-transparent h-10"></div>
         </section>
 
         {/* Challenge & Solution Section */}
         <section className="py-16 md:py-24 bg-slate-50">
           <div className="container">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">🎯 地方自治体の課題 × まちかどクエストの解決策</h2>
+              <div className="inline-flex items-center justify-center bg-primary/5 w-12 h-12 rounded-full mb-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <MapPin className="h-5 w-5 text-primary" />
+                </div>
+              </div>
+              <h2 className="text-3xl font-bold tracking-tight">地方自治体の課題 × まちかどクエストの解決策</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
                 『まちかどクエスト』は、現実の街を舞台にプレイヤーが"記憶の冒険者"となって探索・戦闘・交流を行うARリアルフィールドRPGです。
               </p>
@@ -405,6 +415,236 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Comparison Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-white to-primary/5">
+          <div className="container">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center bg-primary/5 w-12 h-12 rounded-full mb-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Zap className="h-5 w-5 text-primary" />
+                </div>
+              </div>
+              <h2 className="text-3xl font-bold tracking-tight">他サービスとの違いは？（競合比較）</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                ポケモンGOでは描けなかった"あなたの街らしさ"が、ここにある。
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {/* 競合製品1: ポケモンGO */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] border border-gray-100">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 text-center">ポケモンGO</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                      <span className="text-sm">決まった地図・固定体験</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                      <span className="text-sm">地域資源の活用は限定的</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                      <span className="text-sm">グローバル運営で調整不可</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                      <span className="text-sm">教育・福祉との接続なし</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                      <span className="text-sm">高額ライセンス</span>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+            
+              {/* 競合製品2: SCRAP */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] border border-gray-100">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 text-center">SCRAP</h3>
+                  <p className="text-sm text-center text-muted-foreground mb-4">（リアル脱出ゲーム）</p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span className="text-sm">特定会場のみ</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span className="text-sm">地域資源を物語的に演出</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span className="text-sm">都度イベント発注</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span className="text-sm">物語によっては教育連携可能</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                      </svg>
+                      <span className="text-sm">イベント単発型</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              {/* 自社製品: まちかどクエスト */}
+              <div className="bg-primary/10 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-8px] border-2 border-primary relative">
+                <div className="absolute top-0 right-0">
+                  <div className="bg-gradient-to-r from-primary to-primary/80 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">おすすめ</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4 text-center text-primary">まちかどクエスト</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span className="text-sm font-medium">実際の街を自由に冒険フィールド化</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span className="text-sm font-medium">店舗・歴史・伝承などを自在に組み込める</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span className="text-sm font-medium">自治体と共創できるPoC型モデル</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span className="text-sm font-medium">防災・探究・地域福祉と連携設計が可能</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span className="text-sm font-medium">低コストでの持続運用が可能</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-12 text-center">
+              <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary font-medium">
+                <span className="mr-2">✨</span>
+                <p className="text-lg">
+                他社製品が"一時的なエンタメ"にとどまる中で、まちかどクエストは"地域と共に育つ社会接続型コンテンツ"です。
+              </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* アプリの主要機能セクション */}
+        <section className="py-16 md:py-24">
+          <div className="container">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight">アプリの主要機能</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                『まちかどクエスト』で体験できる主な機能をご紹介します。
+              </p>
+            </div>
+            
+            <div className="flex flex-col md:flex-row gap-8 overflow-hidden max-w-5xl mx-auto">
+              <div className="md:w-1/3 relative">
+                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                    <div className="relative w-full h-full">
+                    <Image 
+                      src={getImagePath("/images/app-map-screen.png")}
+                      alt="メインマップ画面"
+                        fill
+                        className="object-contain"
+                    />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="font-bold text-xl mb-2">マップ探索</h3>
+                  <p className="text-muted-foreground">位置情報と連動した冒険マップで街を探索</p>
+                </div>
+              </div>
+              <div className="md:w-1/3 relative md:mt-12">
+                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                    <div className="relative w-full h-full">
+                    <Image 
+                      src={getImagePath("/images/app-battle-screen.png")}
+                      alt="バトル画面"
+                        fill
+                        className="object-contain"
+                    />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="font-bold text-xl mb-2">ARバトル</h3>
+                  <p className="text-muted-foreground">カメラを通してモンスターと臨場感ある戦闘</p>
+                </div>
+              </div>
+              <div className="md:w-1/3 relative">
+                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                    <div className="relative w-full h-full">
+                    <Image 
+                      src={getImagePath("/images/app-quest-screen.png")}
+                      alt="クエスト一覧画面"
+                        fill
+                        className="object-contain"
+                    />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="font-bold text-xl mb-2">クエスト管理</h3>
+                  <p className="text-muted-foreground">地域に即したストーリーや季節イベント</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button className="bg-primary hover:bg-primary/80">
+                デモ体験を申し込む
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Use Cases Section */}
         <section id="use-cases" className="py-16 md:py-24 bg-slate-50">
           <div className="container">
@@ -478,384 +718,6 @@ export default function LandingPage() {
                   </ul>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Comparison Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-white to-primary/5">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight">🔍 他サービスとの違いは？（競合比較）</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-                ポケモンGOでは描けなかった"あなたの街らしさ"が、ここにある。
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* 競合製品1: ポケモンGO */}
-              <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] border border-gray-100">
-                <div className="p-1 bg-gradient-to-br from-gray-50 to-gray-200">
-                  <div className="h-40 flex items-center justify-center p-4">
-                    <Image 
-                      src="/placeholder-xosu1.png" 
-                      alt="ポケモンGO"
-                      width={120}
-                      height={120}
-                      className="object-contain h-full"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-4 text-center">ポケモンGO</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      <span className="text-sm">決まった地図・固定体験</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      <span className="text-sm">地域資源の活用は限定的</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      <span className="text-sm">グローバル運営で調整不可</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      <span className="text-sm">教育・福祉との接続なし</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                      </svg>
-                      <span className="text-sm">高額ライセンス</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* 競合製品2: SCRAP */}
-              <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] border border-gray-100">
-                <div className="p-1 bg-gradient-to-br from-gray-50 to-gray-200">
-                  <div className="h-40 flex items-center justify-center p-4">
-                    <Image 
-                      src="/placeholder-y8siu.png" 
-                      alt="SCRAP（リアル脱出ゲーム）"
-                      width={120}
-                      height={120}
-                      className="object-contain h-full"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-4 text-center">SCRAP</h3>
-                  <p className="text-sm text-center text-muted-foreground mb-4">（リアル脱出ゲーム）</p>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span className="text-sm">特定会場のみ</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span className="text-sm">地域資源を物語的に演出</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span className="text-sm">都度イベント発注</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span className="text-sm">物語によっては教育連携可能</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-amber-500 mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                      <span className="text-sm">イベント単発型</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* 自社製品: まちかどクエスト */}
-              <div className="bg-primary/10 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-8px] border-2 border-primary relative">
-                <div className="absolute top-0 right-0">
-                  <div className="bg-gradient-to-r from-primary to-primary/80 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">おすすめ</div>
-                </div>
-                <div className="p-1 bg-gradient-to-br from-white to-primary/10">
-                  <div className="h-40 flex items-center justify-center p-4">
-                    <Image 
-                      src="/placeholder-logo.png" 
-                      alt="まちかどクエスト"
-                      width={160}
-                      height={160}
-                      className="object-contain h-full"
-                    />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-4 text-center text-primary">まちかどクエスト</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span className="text-sm font-medium">実際の街を自由に冒険フィールド化</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span className="text-sm font-medium">店舗・歴史・伝承などを自在に組み込める</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span className="text-sm font-medium">自治体と共創できるPoC型モデル</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span className="text-sm font-medium">防災・探究・地域福祉と連携設計が可能</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <svg className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span className="text-sm font-medium">低コストでの持続運用が可能</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-12 text-center">
-              <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary font-medium">
-                <span className="mr-2">✨</span>
-                <p className="text-lg">
-                  他社製品が"一時的なエンタメ"にとどまる中で、まちかどクエストは"地域と共に育つ社会接続型コンテンツ"です。
-                </p>
-              </div>
-            </div>
-            
-            {/* 評価レーティングバー */}
-            <div className="mt-16 max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-              <h3 className="text-xl font-bold mb-6 text-center">製品比較レーダーチャート</h3>
-              
-              <div className="space-y-8">
-                {/* 地域特性の反映 */}
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">地域特性の反映</span>
-                    <span className="text-sm text-muted-foreground">高いほど良い</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="w-28 text-sm">ポケモンGO</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-red-300 to-red-500 h-full rounded-full transition-all duration-500" style={{ width: '30%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">30%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm">SCRAP</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-amber-300 to-amber-500 h-full rounded-full transition-all duration-500" style={{ width: '55%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">55%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm font-medium text-primary">まちかどクエスト</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-primary/70 to-primary h-full rounded-full transition-all duration-500" style={{ width: '95%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">95%</span>
-                  </div>
-                </div>
-                
-                {/* 地域課題への貢献 */}
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">地域課題への貢献</span>
-                    <span className="text-sm text-muted-foreground">高いほど良い</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="w-28 text-sm">ポケモンGO</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-red-300 to-red-500 h-full rounded-full transition-all duration-500" style={{ width: '20%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">20%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm">SCRAP</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-amber-300 to-amber-500 h-full rounded-full transition-all duration-500" style={{ width: '40%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">40%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm font-medium text-primary">まちかどクエスト</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-primary/70 to-primary h-full rounded-full transition-all duration-500" style={{ width: '90%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">90%</span>
-                  </div>
-                </div>
-                
-                {/* カスタマイズ性 */}
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">カスタマイズ性</span>
-                    <span className="text-sm text-muted-foreground">高いほど良い</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="w-28 text-sm">ポケモンGO</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-red-300 to-red-500 h-full rounded-full transition-all duration-500" style={{ width: '10%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">10%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm">SCRAP</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-amber-300 to-amber-500 h-full rounded-full transition-all duration-500" style={{ width: '60%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">60%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm font-medium text-primary">まちかどクエスト</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-primary/70 to-primary h-full rounded-full transition-all duration-500" style={{ width: '95%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">95%</span>
-                  </div>
-                </div>
-                
-                {/* コスト効率 */}
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">コスト効率</span>
-                    <span className="text-sm text-muted-foreground">高いほど良い</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="w-28 text-sm">ポケモンGO</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-red-300 to-red-500 h-full rounded-full transition-all duration-500" style={{ width: '15%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">15%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm">SCRAP</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-amber-300 to-amber-500 h-full rounded-full transition-all duration-500" style={{ width: '30%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">30%</span>
-                  </div>
-                  <div className="flex items-center gap-4 mt-2">
-                    <span className="w-28 text-sm font-medium text-primary">まちかどクエスト</span>
-                    <div className="flex-1 bg-gray-100 h-5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-primary/70 to-primary h-full rounded-full transition-all duration-500" style={{ width: '85%' }}></div>
-                    </div>
-                    <span className="w-8 text-sm text-center">85%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* アプリの主要機能セクション */}
-        <section className="py-16 md:py-24">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight">アプリの主要機能</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-                『まちかどクエスト』で体験できる主な機能をご紹介します。
-              </p>
-            </div>
-            
-            <div className="flex flex-col md:flex-row gap-8 overflow-hidden max-w-5xl mx-auto">
-              <div className="md:w-1/3 relative">
-                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                    <Image 
-                      src={getImagePath("/images/app-map-screen.png")}
-                      alt="メインマップ画面"
-                      width={300}
-                      height={600}
-                      className="h-full w-auto object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 text-center">
-                  <h3 className="font-bold text-xl mb-2">マップ探索</h3>
-                  <p className="text-muted-foreground">位置情報と連動した冒険マップで街を探索</p>
-                </div>
-              </div>
-              <div className="md:w-1/3 relative md:mt-12">
-                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                    <Image 
-                      src={getImagePath("/images/app-battle-screen.png")}
-                      alt="バトル画面"
-                      width={300}
-                      height={600}
-                      className="h-full w-auto object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 text-center">
-                  <h3 className="font-bold text-xl mb-2">ARバトル</h3>
-                  <p className="text-muted-foreground">カメラを通してモンスターと臨場感ある戦闘</p>
-                </div>
-              </div>
-              <div className="md:w-1/3 relative">
-                <div className="aspect-[9/16] overflow-hidden rounded-3xl shadow-lg border-8 border-gray-900 relative mx-auto max-w-[300px]">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                    <Image 
-                      src={getImagePath("/images/app-quest-screen.png")}
-                      alt="クエスト一覧画面"
-                      width={300}
-                      height={600}
-                      className="h-full w-auto object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 text-center">
-                  <h3 className="font-bold text-xl mb-2">クエスト管理</h3>
-                  <p className="text-muted-foreground">地域に即したストーリーや季節イベント</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="text-center mt-12">
-              <Button className="bg-primary hover:bg-primary/80">
-                デモ体験を申し込む
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
             </div>
           </div>
         </section>
